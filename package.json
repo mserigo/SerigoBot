@@ -1,0 +1,26 @@
+{
+  "name": "serigobot",
+  "version": "1.0.0",
+  "description": "\"Build a bot in Node.js\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mserigo/SerigoBot.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "Marcelo Serigo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mserigo/SerigoBot/issues"
+  },
+  "homepage": "https://github.com/mserigo/SerigoBot#readme",
+  "dependencies": {
+    "botbuilder": "^3.2.3",
+    "restify": "^5.0.0-beta-1"
+  }
+}

@@ -32,12 +32,14 @@ bot.dialog('/', [
         session.beginDialog('/askName');
     },
     function (session, results) {
-        session.send('Olá %s!', results.response);
+        session.send('Ola %s!', results.response);
+        session.send('Tudo bem com voce?');
+        session.send('Como posso te ajudar?');
     }
 ]);
 bot.dialog('/askName', [
     function (session) {
-        builder.Prompts.text(session, 'Olá! Como você gosta de ser chamado?');
+        builder.Prompts.text(session, 'Ola! Como voce gosta de ser chamado?');
     },
     function (session, results) {
         session.endDialogWithResult(results);

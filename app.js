@@ -29,8 +29,8 @@ var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', dialog);
 
 dialog.matches('builtin.intent.AgendamentoExame.Agendar', builder.DialogAction.send('Chamou Agendar1'));
-
 dialog.matches('builtin.intent.Agendar', builder.DialogAction.send('Chamou Agendar2'));
+dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));
 
 // Create bot dialogs
 //bot.dialog('/', function (session) {

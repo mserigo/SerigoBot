@@ -34,6 +34,7 @@ dialog.matches('builtin.intent.Agendar', builder.DialogAction.send('Chamou Agend
 
 dialog.onDefault([
     function (session, args, next) {
+		session.send("qualquer coisa");
 		session.send(args.entities);
     }
 ]);

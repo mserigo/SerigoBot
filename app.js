@@ -22,6 +22,24 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
 // Create bot dialogs
-bot.dialog('/', function (session) {
-    session.send("Hello World");
-});
+//bot.dialog('/', function (session) {
+//    session.send("Hello World");
+//});
+
+
+bot.dialog('/', [
+    function (session) {
+        session.beginDialog('/askName');
+    },
+    function (session, results) {
+        session.send('Olá %s!', results.response);
+    }
+]);
+bot.dialog('/askName', [
+    function (session) {
+        builder.Prompts.text(session, 'Olá! Como você gosta de ser chamado?');
+    },
+    function (session, results) {
+        session.endDialogWithResult(results);
+    }
+]);

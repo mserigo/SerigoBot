@@ -21,13 +21,23 @@ var connector = new builder.ChatConnector
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 
+// Variaveis do LUIS
+var model = 'https://api.projectoxford.ai/luis/v1/application?id=97a354c7-a3b5-4bfd-af0e-23cdeeca07e9&subscription-key=a6e93ac78b9d4a86a02561ba42940a48';
+var recognizer = new builder.LuisRecognizer(model);
+var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
+
+bot.dialog('/', dialog);
+
+
+
+
 // Create bot dialogs
 //bot.dialog('/', function (session) {
 //    session.send("Hello World");
 //});
 
 
-bot.dialog('/', [
+bot.dialog('/old', [
     function (session) {
         session.beginDialog('/askName');
     },
@@ -37,6 +47,7 @@ bot.dialog('/', [
         session.send('Como posso te ajudar?');
     }
 ]);
+
 bot.dialog('/askName', [
     function (session) {
         builder.Prompts.text(session, 'Ola! Como voce gosta de ser chamado?');

@@ -35,7 +35,13 @@ dialog.matches('builtin.intent.Agendar', builder.DialogAction.send('Chamou Agend
 dialog.onDefault([
     function (session, args, next) {
 		session.send("qualquer coisa");
-		session.send(args.entities);
+		var title = builder.EntityRecognizer.findEntity(args.entities, 'builtin.AgendamentoExame.Entidade');
+		var outracoisa = builder.EntityRecognizer.findEntity(args.entities, 'builtin.Entidade');
+		var aindaoutro = builder.EntityRecognizer.findEntity(args.entities, 'Entidade');
+		
+		session.send('tile %s !', title);
+		session.send('tile %s !', outracoisa);
+		session.send('tile %s !', aindaoutro);
     }
 ]);
 

@@ -28,7 +28,7 @@ var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 
 bot.dialog('/', dialog);
 
-dialog.matches('Saudacao', builder.DialogAction.send('Entendi que voce quer dizer ola'));
+//dialog.matches('Saudacao', builder.DialogAction.send('Entendi que voce quer dizer ola'));
 dialog.matches('Remarcar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
 dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
 dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Remarcar'));

@@ -57,7 +57,6 @@ dialog.matches('Saudacao', [
     },
     function (session, results) {
         session.send('Ola %s!', session.userData.profile.name);
-        //session.send('Tudo bem com voce?');
         session.send('Como posso te ajudar?');
     }
 ]);

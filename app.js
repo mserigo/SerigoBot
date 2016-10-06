@@ -50,6 +50,20 @@ dialog.onDefault([
 ]);
 
 
+dialog.matches('Saudacao', [
+    function (session, args, next) {
+		//session.beginDialog('/askName');
+		session.beginDialog('/ensureProfile', session.userData.profile);
+    },
+    function (session, results) {
+        session.send('Ola %s!', session.userData.profile.name);
+        //session.send('Tudo bem com voce?');
+        session.send('Como posso te ajudar?');
+    }
+]);
+
+
+
 // Create bot dialogs
 //bot.dialog('/', function (session) {
 //    session.send("Hello World");
@@ -73,5 +87,22 @@ bot.dialog('/askName', [
     },
     function (session, results) {
         session.endDialogWithResult(results);
+    }
+]);
+
+bot.dialog('/ensureProfile', [
+    function (session, args, next) {
+        session.dialogData.profile = args || {};
+        if (!args.profile.name) {
+            builder.Prompts.text(session, "Ola! Qual o seu nome?");
+        } else {
+            next();
+        }
+    },
+    function (session, results, next) {
+        if (results.response) {
+            session.dialogData.profile.name = results.response;
+        }
+        session.endDialogWithResults({ response: session.dialogData.profile })
     }
 ]);

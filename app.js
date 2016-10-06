@@ -52,11 +52,11 @@ dialog.onDefault([
 
 dialog.matches('Saudacao', [
     function (session, args, next) {
-		//session.beginDialog('/askName');
-		session.beginDialog('/ensureProfile', session.userData.profile);
+		session.beginDialog('/askName');
+		//session.beginDialog('/ensureProfile', session.userData.profile);
     },
     function (session, results) {
-        session.send('Ola %s!', session.userData.profile.name);
+        session.send('Ola %s!', results.response);
         session.send('Como posso te ajudar?');
     }
 ]);

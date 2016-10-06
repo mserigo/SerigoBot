@@ -68,7 +68,7 @@ dialog.matches('Agendar', [
 		var data = builder.EntityRecognizer.findEntity(args.entities, 'Data');
         var dados = session.dialogData.dados = {
           paciente: paciente ? paciente.entity : null,
-          data: data ? data : null  
+          data: data ? data.entity : null  
         };
         
         // Prompt for title

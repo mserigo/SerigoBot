@@ -86,7 +86,7 @@ dialog.matches('Agendar', [
 
         // Prompt for time (title will be blank if the user said cancel)
         if (dados.paciente && !dados.data) {
-            builder.Prompts.time(session, 'Para quando voce gostaria de agendar?');
+            builder.Prompts.text(session, 'Para quando voce gostaria de agendar?');
         } else {
             next();
         }

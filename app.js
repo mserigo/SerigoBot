@@ -28,9 +28,12 @@ var dialog = new builder.IntentDialog({ recognizers: [recognizer] });
 
 bot.dialog('/', dialog);
 
-dialog.matches('builtin.intent.AgendamentoExame.Agendar', builder.DialogAction.send('Chamou Agendar1'));
-dialog.matches('builtin.intent.Agendar', builder.DialogAction.send('Chamou Agendar2'));
-dialog.matches('Agendar', builder.DialogAction.send('Chamou Agendar3'));
+dialog.matches('Saudacao', builder.DialogAction.send('Entendi que voce quer dizer ola'));
+dialog.matches('Remarcar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
+dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
+dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
+dialog.matches('Agendar', builder.DialogAction.send('Entendi que voce quer Agendar'));
+
 //dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));
 
 dialog.onDefault([

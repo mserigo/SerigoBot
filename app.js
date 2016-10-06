@@ -30,8 +30,8 @@ bot.dialog('/', dialog);
 
 //dialog.matches('Saudacao', builder.DialogAction.send('Entendi que voce quer dizer ola'));
 dialog.matches('Remarcar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
-dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
-dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
+dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Cancelar'));
+dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Reclamar'));
 dialog.matches('Agendar', builder.DialogAction.send('Entendi que voce quer Agendar'));
 
 dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));

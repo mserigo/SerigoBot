@@ -34,20 +34,20 @@ dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Rema
 dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
 dialog.matches('Agendar', builder.DialogAction.send('Entendi que voce quer Agendar'));
 
-//dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));
+dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));
 
-dialog.onDefault([
-    function (session, args, next) {
-		session.send("qualquer coisa");
-		var title = builder.EntityRecognizer.findEntity(args.entities, 'builtin.AgendamentoExame.Entidade');
-		var outracoisa = builder.EntityRecognizer.findEntity(args.entities, 'builtin.Entidade');
-		var aindaoutro = builder.EntityRecognizer.findEntity(args.entities, 'Entidade');
+//dialog.onDefault([
+//    function (session, args, next) {
+//		session.send("qualquer coisa");
+//		var title = builder.EntityRecognizer.findEntity(args.entities, 'builtin.AgendamentoExame.Entidade');
+//		var outracoisa = builder.EntityRecognizer.findEntity(args.entities, 'builtin.Entidade');
+//		var aindaoutro = builder.EntityRecognizer.findEntity(args.entities, 'Entidade');
 		
-		session.send('tile %s !', title);
-		session.send('tile %s !', outracoisa);
-		session.send('tile %s !', aindaoutro);
-    }
-]);
+//		session.send('tile %s !', title);
+//		session.send('tile %s !', outracoisa);
+//		session.send('tile %s !', aindaoutro);
+//   }
+//]);
 
 
 dialog.matches('Saudacao', [

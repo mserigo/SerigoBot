@@ -32,7 +32,7 @@ bot.dialog('/', dialog);
 dialog.matches('Remarcar', builder.DialogAction.send('Entendi que voce quer Remarcar'));
 dialog.matches('Cancelar', builder.DialogAction.send('Entendi que voce quer Cancelar'));
 dialog.matches('Reclamar', builder.DialogAction.send('Entendi que voce quer Reclamar'));
-dialog.matches('Agendar', builder.DialogAction.send('Entendi que voce quer Agendar'));
+//dialog.matches('Agendar', builder.DialogAction.send('Entendi que voce quer Agendar'));
 
 dialog.onDefault(builder.DialogAction.send("Desculpe, nao entendi..."));
 
@@ -61,6 +61,50 @@ dialog.matches('Saudacao', [
     }
 ]);
 
+dialog.matches('Agendar', [
+        function (session, args, next) {
+        // Resolve and store any entities passed from LUIS.
+        var paciente = builder.EntityRecognizer.findEntity(args.entities, 'Paciente');
+		var data = builder.EntityRecognizer.findEntity(args.entities, 'Data');
+        var dados = session.dialogData.dados = {
+          paciente: paciente ? paciente.entity : null,
+          data: data ? data : null  
+        };
+        
+        // Prompt for title
+        if (!dados.paciente) {
+            builder.Prompts.text(session, 'Quem seria o paciente?');
+        } else {
+            next();
+        }
+    },
+    function (session, results, next) {
+        var dados = session.dialogData.dados;
+        if (results.response) {
+            dados.paciente = results.response;
+        }
+
+        // Prompt for time (title will be blank if the user said cancel)
+        if (dados.paciente && !dados.data) {
+            builder.Prompts.time(session, 'Para quando voce gostaria de agendar?');
+        } else {
+            next();
+        }
+    },
+    function (session, results) {
+        var dados = session.dialogData.dados;
+        if (results.response) {
+			dados.data = results.response;
+        }
+        
+        // Set the alarm (if title or timestamp is blank the user said cancel)
+        if (dados.paciente && dados.data) {
+            session.send('Ok... exame agendado para %s na data %s .', dados.paciente, dados.data);
+        } else {
+            session.send('Ok... sem problema.');
+        }
+    }
+]);
 
 
 // Create bot dialogs
